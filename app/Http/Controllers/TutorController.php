@@ -47,10 +47,16 @@ class TutorController extends BaseController
       $result->subject = CommonController::getSelectedName('tbl_subject', $result->subject);
       $result->activity = CommonController::getSelectedName('tbl_activity_content', $result->activity);
       $result->service_area = CommonController::getSelectedName('tbl_location', $result->location);
+      $result->activatedStatus = array('id' => $result->id, 'status' => $result->activated);
 
       $returnVal[] = $result;
     }
 
     echo json_encode(array('data' => $returnVal));
+  }
+
+  public function setChangeApproveStatus(Request $request)
+  {
+    return CommonModel::changeApproveStatus('tbl_tutor', $request->id, $request->status);
   }
 }

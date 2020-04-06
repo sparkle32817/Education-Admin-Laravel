@@ -1,9 +1,5 @@
 @extends('layouts.common')
 
-@section('page-header')
-<link href="/css/system/dataTables.bootstrap4.css" rel="stylesheet">
-@endsection
-
 @section('page-title')
 Education Mangement
 @endsection
@@ -17,7 +13,7 @@ Education Mangement
           <table id="datatable" class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th width="5%">#</th>
+                <th width="3%">#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -40,8 +36,5 @@ Education Mangement
 @endsection
 
 @section('page-footer')
-<!-- DataTable -->
-<script src="/js/system/datatables.min.js"></script>
-
 <script src="/js/education-manage.js"></script>
 @endsection

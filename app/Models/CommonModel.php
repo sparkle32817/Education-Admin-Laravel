@@ -50,4 +50,11 @@ class CommonModel extends Model
   {
     return DB::table($tableName)->where("id", $postedData->id)->delete();
   }
+
+  static function changeApproveStatus($tableName, $id, $status)
+  {
+    return DB::table($tableName)
+      ->where('id', $id)
+      ->update(['activated' => $status]);
+  }
 }

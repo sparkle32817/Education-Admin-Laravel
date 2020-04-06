@@ -13,7 +13,7 @@ Education Detail
 <div class="row">
   <!-- Column -->
   <div class="col-lg-4 col-xlg-3 col-md-5">
-    <div class="card"> <img class="card-img" src="../assets/images/background/socialbg.jpg" height="456" alt="Card image">
+    <div class="card"> <img class="card-img" src="/images/detail-img.jpg" height="456" alt="Card image">
       <div class="card-img-overlay card-inverse text-white social-profile d-flex justify-content-center">
         <div class="align-self-center"> <img src="{{ $data->avatar }}" class="img-circle" width="100">
           <h4 class="card-title">{{ $data->name }}</h4>
@@ -143,8 +143,4 @@ Education Detail
   <!-- Column -->
 </div>
 <!-- Row -->
-@endsection
-
-@section('page-footer')
-<!-- DataTable -->
 @endsection

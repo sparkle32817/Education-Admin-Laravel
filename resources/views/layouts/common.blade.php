@@ -11,6 +11,10 @@
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
   <title>Admin Panel</title>
+  <link href="{{ asset('css/system/dataTables.bootstrap4.css') }}" rel="stylesheet">
+  <!--alerts CSS -->
+  <link href="{{ asset('css/system/sweetalert.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/system/switchery.min.css') }}" rel="stylesheet">
   <!-- Custom CSS -->
   <link href="{{ asset('css/system/style.min.css') }}" rel="stylesheet">
 
@@ -210,8 +214,18 @@
   <!--stickey kit -->
   <script src="{{ asset('js/system/sticky-kit.min.js') }}"></script>
   <script src="{{ asset('js/system/jquery.sparkline.min.js') }}"></script>
+  <!-- DataTable -->
+  <script src="{{ asset('js/system/datatables.min.js') }}"></script>
+  <!-- Sweet-Alert  -->
+  <script src="{{ asset('js/system/sweetalert.min.js') }}"></script>
+  <!-- Check Box -->
+  <script src="{{ asset('js/system/switchery.min.js') }}"></script>
   <!--Custom JavaScript -->
   <script src="{{ asset('js/system/custom.min.js') }}"></script>
+
+  <script>
+    let _token = "{{ csrf_token() }}";
+  </script>
 
   @yield('page-footer')
 </body>

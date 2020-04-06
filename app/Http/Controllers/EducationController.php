@@ -45,10 +45,16 @@ class EducationController extends BaseController
       $result->subject = CommonController::getSelectedName('tbl_subject', $result->subject);
       $result->activity = CommonController::getSelectedName('tbl_activity_content', $result->activity);
       $result->address = CommonController::getSelectedName('tbl_location', $result->address);
+      $result->activatedStatus = array('id' => $result->id, 'status' => $result->activated);
 
       $returnVal[] = $result;
     }
 
     echo json_encode(array('data' => $returnVal));
+  }
+
+  public function setChangeApproveStatus(Request $request)
+  {
+    return CommonModel::changeApproveStatus('tbl_education', $request->id, $request->status);
   }
 }

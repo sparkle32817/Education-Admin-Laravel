@@ -1,9 +1,6 @@
 @extends('layouts.common')
 
 @section('page-header')
-<link href="/css/system/dataTables.bootstrap4.css" rel="stylesheet">
-<!--alerts CSS -->
-<link href="/css/system/sweetalert.css" rel="stylesheet" type="text/css">
 <style>
   div.card-body {
     min-height: 850px;
@@ -145,11 +142,6 @@ Activity Mangement
 <script>
   let _token = "{{ csrf_token() }}";
 </script>
-<!-- DataTable -->
-<script src="/js/system/datatables.min.js"></script>
-<!-- Sweet-Alert  -->
-<script src="/js/system/sweetalert.min.js"></script>
-
 <script src="/js/activity-title-manage.js"></script>
 <script src="/js/activity-content-manage.js"></script>
 @endsection

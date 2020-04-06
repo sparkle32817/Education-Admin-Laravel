@@ -27,14 +27,17 @@ Route::get('/', function () {
 Route::get('/education', 'EducationController@index')->name('home');
 Route::get('/educationDetail', 'EducationController@detail');
 Route::get('/getAllEducationData', 'EducationController@getAllData');
+Route::post('/changeEducationStatus', 'EducationController@setChangeApproveStatus');
 
 Route::get('/tutor', 'TutorController@index');
 Route::get('/tutorDetail', 'TutorController@detail');
 Route::get('/getAllTutorData', 'TutorController@getAllData');
+Route::post('/changeTutorStatus', 'TutorController@setChangeApproveStatus');
 
 Route::get('/student', 'StudentController@index');
 Route::get('/studentDetail', 'StudentController@detail');
 Route::get('/getAllStudentData', 'StudentController@getAllData');
+Route::post('/changeStudentStatus', 'StudentController@setChangeApproveStatus');
 
 Route::get('/grade', 'GradeController@index');                          //Grade
 Route::get('/getGrade', 'GradeController@getAllData');
