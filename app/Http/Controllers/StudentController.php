@@ -13,43 +13,41 @@ use App\Models\CommonModel;
 
 class StudentController extends BaseController
 {
-    public function index()
-    {
-        return view('pages.student.index');
-    }
-    
-    public function detail(Request $request)
-    {
-        $id = $request->input('id');
+  public function index()
+  {
+    return view('pages.student.index');
+  }
 
-        $data = CommonModel::getDetailData('tbl_student', $id);
-    
-        unset($data->password);
-            
-        $data->grade = CommonController::getSelectedName('tbl_grade', $data->grade);
-        $data->subject = CommonController::getSelectedName('tbl_subject', $data->subject);
-        $data->activity = CommonController::getSelectedName('tbl_activity_content', $data->activity);
-        $data->location = CommonController::getSelectedName('tbl_location', $data->location);
+  public function detail(Request $request)
+  {
+    $id = $request->input('id');
 
-        return view('pages.student.detail', compact('data'));
-    }
-    
-    public function getAllData()
-    {
-        $returnVal = array();
-        foreach (CommonModel::getAllData('tbl_student') as $result)
-        {
-            unset($result->password);
+    $data = CommonModel::getDetailData('tbl_student', $id);
 
-            $result->grade = CommonController::getSelectedName('tbl_grade', $result->grade);
-            $result->subject = CommonController::getSelectedName('tbl_subject', $result->subject);
-            $result->activity = CommonController::getSelectedName('tbl_activity_content', $result->activity);
-            $result->location = CommonController::getSelectedName('tbl_location', $result->location);
+    unset($data->password);
 
-            $returnVal[] = $result;
-        }
+    $data->grade = CommonController::getSelectedName('tbl_grade', $data->grade);
+    $data->subject = CommonController::getSelectedName('tbl_subject', $data->subject);
+    $data->activity = CommonController::getSelectedName('tbl_activity_content', $data->activity);
+    $data->location = CommonController::getSelectedName('tbl_location', $data->location);
 
-        echo json_encode(array('data'=>$returnVal));
+    return view('pages.student.detail', compact('data'));
+  }
+
+  public function getAllData()
+  {
+    $returnVal = array();
+    foreach (CommonModel::getAllData('tbl_student') as $result) {
+      unset($result->password);
+
+      $result->grade = CommonController::getSelectedName('tbl_grade', $result->grade);
+      $result->subject = CommonController::getSelectedName('tbl_subject', $result->subject);
+      $result->activity = CommonController::getSelectedName('tbl_activity_content', $result->activity);
+      $result->location = CommonController::getSelectedName('tbl_location', $result->location);
+
+      $returnVal[] = $result;
     }
 
+    echo json_encode(array('data' => $returnVal));
+  }
 }

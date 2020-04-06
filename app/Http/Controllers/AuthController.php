@@ -10,16 +10,16 @@ use DB;
 
 class AuthController extends Controller
 {
-	//
-	public function index()
-	{
-	}
+  //
+  public function index()
+  {
+  }
 
-	public function checkLogin(Request $request)
-	{
-		if (AuthModel->where([['username', $request->user], ['password', $request->pass]])->get()->count()) {
-			return 'success';
-		}
-		return 'fail';
-	}
+  public function checkLogin(Request $request)
+  {
+    if (AuthModel->where([['username', $request->user], ['password', $request->pass]])->get()->count()) {
+      return 'success';
+    }
+    return 'fail';
+  }
 }

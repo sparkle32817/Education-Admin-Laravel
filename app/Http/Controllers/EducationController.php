@@ -14,41 +14,41 @@ use App\Models\CommonModel;
 
 class EducationController extends BaseController
 {
-    public function index()
-    {
-        return view('pages.education.index');
+  public function index()
+  {
+    return view('pages.education.index');
+  }
+
+  public function detail(Request $request)
+  {
+    $id = $request->input('id');
+
+    $data = CommonModel::getDetailData('tbl_education', $id);
+
+    unset($data->password);
+
+    $data->grade = CommonController::getSelectedName('tbl_grade', $data->grade);
+    $data->subject = CommonController::getSelectedName('tbl_subject', $data->subject);
+    $data->activity = CommonController::getSelectedName('tbl_activity_content', $data->activity);
+    $data->address = CommonController::getSelectedName('tbl_location', $data->address);
+
+    return view('pages.education.detail', compact('data'));
+  }
+
+  public function getAllData()
+  {
+    $returnVal = array();
+    foreach (CommonModel::getAllData('tbl_education') as $result) {
+      unset($result->password);
+
+      $result->grade = CommonController::getSelectedName('tbl_grade', $result->grade);
+      $result->subject = CommonController::getSelectedName('tbl_subject', $result->subject);
+      $result->activity = CommonController::getSelectedName('tbl_activity_content', $result->activity);
+      $result->address = CommonController::getSelectedName('tbl_location', $result->address);
+
+      $returnVal[] = $result;
     }
 
-    public function detail(Request $request)
-    {
-        $id = $request->input('id');
-
-        $data = CommonModel::getDetailData('tbl_education', $id);
-    
-        unset($data->password);
-            
-        $data->grade = CommonController::getSelectedName('tbl_grade', $data->grade);
-        $data->subject = CommonController::getSelectedName('tbl_subject', $data->subject);
-        $data->activity = CommonController::getSelectedName('tbl_activity_content', $data->activity);
-
-        return view('pages.education.detail', compact('data'));
-    }
-    
-    public function getAllData()
-    {
-        $returnVal = array();
-        foreach (CommonModel::getAllData('tbl_education') as $result)
-        {
-            unset($result->password);
-
-            $result->grade = CommonController::getSelectedName('tbl_grade', $result->grade);
-            $result->subject = CommonController::getSelectedName('tbl_subject', $result->subject);
-            $result->activity = CommonController::getSelectedName('tbl_activity_content', $result->activity);
-
-            $returnVal[] = $result;
-        }
-
-        echo json_encode(array('data'=>$returnVal));
-    }
-
+    echo json_encode(array('data' => $returnVal));
+  }
 }

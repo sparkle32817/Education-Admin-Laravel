@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class AuthModel extends Model
 {
-	//
-	protected $table = 'tbl_admin';
+  //
+  protected $table = 'tbl_admin';
 }

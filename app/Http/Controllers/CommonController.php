@@ -12,15 +12,13 @@ use App\Models\CommonModel;
 
 class CommonController extends BaseController
 {
-    static function getSelectedName($tableName, $ids)
-    {
-        $names = array();
-        foreach(CommonModel::getSelectedName( $tableName, $ids) as $nameArr)
-        {
-            array_push($names, $nameArr->name);
-        }
-
-        return implode(', ', $names);
+  static function getSelectedName($tableName, $ids)
+  {
+    $names = array();
+    foreach (CommonModel::getSelectedName($tableName, $ids) as $nameArr) {
+      array_push($names, $nameArr->name);
     }
 
+    return implode(', ', $names);
+  }
 }

@@ -11,26 +11,25 @@ use DB;
 
 class PaymentController extends BaseController
 {
-    public function index()
-    {
-        return view('pages.payment.index');
+  public function index()
+  {
+    return view('pages.payment.index');
+  }
+
+  public function getAllData()
+  {
+    $result = array();
+    $cnt = 0;
+    foreach (CommonModel::getAllData('tbl_payment') as $item) {
+      $res = array();
+      $res['cnt'] = ++$cnt;
+      $res['user_type'] = $item->user_type;
+      $res['user_name'] = DB::table('tbl_' . $item->user_type)->where('id', $item->user_id)->first()->name;
+      $res['amount'] = $item->amount;
+      $res['description'] = $item->description;
+
+      $result[] = $res;
     }
-
-    public function getAllData()
-    {
-        $result = array(); $cnt = 0;
-        foreach(CommonModel::getAllData('tbl_payment') as $item)
-        {
-            $res = array();
-            $res['cnt'] = ++$cnt;
-            $res['user_type'] = $item->user_type;
-            $res['user_name'] = DB::table('tbl_'.$item->user_type)->where('id', $item->user_id)->first()->name;
-            $res['amount'] = $item->amount;
-            $res['description'] = $item->description;
-
-            $result[] = $res;
-        }
-        echo json_encode(array('data'=>$result));
-    }
-
+    echo json_encode(array('data' => $result));
+  }
 }

@@ -20,7 +20,7 @@
 // Route::get('login', 'AuthController@index')
 
 // Route::get('/', 'HomeController@index');
-Route::get('/', function(){
+Route::get('/', function () {
   return redirect('/education');
 });
 
