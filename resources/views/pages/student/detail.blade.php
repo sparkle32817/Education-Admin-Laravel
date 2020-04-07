@@ -63,7 +63,9 @@ Education Detail
       <!-- Nav tabs -->
       <ul class="nav nav-tabs profile-tab" role="tablist">
         <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
-        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#home" role="tab">Timeline</a> </li>
+        <div class="pt-2 px-5 flex-xl-grow-1">
+          <a href="/student" class="btn waves-effect waves-light btn-rounded btn-outline-info m-1 float-right">Back</a>
+        </div>
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
@@ -103,52 +105,6 @@ Education Detail
                 </div>
               </div>
             </form>
-          </div>
-        </div>
-        <div class="tab-pane" id="home" role="tabpanel">
-          <div class="card-body">
-            <div class="profiletimeline">
-              <div class="calendar-head">
-                <div class="calendar-head-cell-blank"></div>
-                <div class="calendar-head-cell">Mon</div>
-                <div class="calendar-head-cell">Tue</div>
-                <div class="calendar-head-cell">Wed</div>
-                <div class="calendar-head-cell">Thu</div>
-                <div class="calendar-head-cell">Fri</div>
-                <div class="calendar-head-cell">Sat</div>
-                <div class="calendar-head-cell">Sun</div>
-              </div>
-              <div class="calendar-body">
-                <div class="calendar-time">
-                  <?php
-                  for ($i = 8; $i < 23; $i++) {
-                  ?>
-                    <div class="caldendar-time-cell subhead"><?= $i < 10 ? '0' . $i . ':00' : $i . ':00'; ?></div>
-                  <?php
-                  }
-                  ?>
-                </div>
-                <?php
-                $timeline = explode(',', $data->timeline);
-                for ($i = 1; $i < 8; $i++) {
-                ?>
-                  <div class="calendar-week-day">
-                    <?php
-                    for ($j = 8; $j < 23; $j++) {
-                      $time = 'cell-' . $i . '-' . $j;
-                    ?>
-                      <div class="caption calendar-cell-container">
-                        <div class="calendar-cell <?= in_array($time, $timeline) ? 'calendar-cell-actived' : ''; ?>"></div>
-                      </div>
-                    <?php
-                    }
-                    ?>
-                  </div>
-                <?php
-                }
-                ?>
-              </div>
-            </div>
           </div>
         </div>
       </div>

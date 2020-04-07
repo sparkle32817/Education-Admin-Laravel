@@ -31,6 +31,7 @@ class EducationController extends BaseController
     $data->subject = CommonController::getSelectedName('tbl_subject', $data->subject);
     $data->activity = CommonController::getSelectedName('tbl_activity_content', $data->activity);
     $data->address = CommonController::getSelectedName('tbl_location', $data->address);
+    $data->date = date('Y-m-d', strtotime($data->membership_updated_date));
 
     return view('pages.education.detail', compact('data'));
   }
@@ -56,5 +57,10 @@ class EducationController extends BaseController
   public function setChangeApproveStatus(Request $request)
   {
     return CommonModel::changeApproveStatus('tbl_education', $request->id, $request->status);
+  }
+
+  public function editEducationInfo(Request $request)
+  {
+    return CommonModel::changeMemberShipInfo('tbl_education', $request->id, $request->membership, $request->expireDate);
   }
 }

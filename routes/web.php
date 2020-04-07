@@ -28,11 +28,13 @@ Route::get('/education', 'EducationController@index')->name('home');
 Route::get('/educationDetail', 'EducationController@detail');
 Route::get('/getAllEducationData', 'EducationController@getAllData');
 Route::post('/changeEducationStatus', 'EducationController@setChangeApproveStatus');
+Route::post('/editEducationInfo', 'EducationController@editEducationInfo');
 
 Route::get('/tutor', 'TutorController@index');
 Route::get('/tutorDetail', 'TutorController@detail');
 Route::get('/getAllTutorData', 'TutorController@getAllData');
 Route::post('/changeTutorStatus', 'TutorController@setChangeApproveStatus');
+Route::post('/editTutorInfo', 'TutorController@editTutorInfo');
 
 Route::get('/student', 'StudentController@index');
 Route::get('/studentDetail', 'StudentController@detail');

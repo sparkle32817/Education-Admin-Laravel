@@ -57,4 +57,11 @@ class CommonModel extends Model
       ->where('id', $id)
       ->update(['activated' => $status]);
   }
+
+  static function changeMemberShipInfo($tableName, $id, $memberType, $expireDate)
+  {
+    return DB::table($tableName)
+      ->where('id', $id)
+      ->update(['membership_type' => $memberType, 'membership_updated_date' => $expireDate]);
+  }
 }
