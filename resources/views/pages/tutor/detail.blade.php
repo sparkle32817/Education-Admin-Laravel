@@ -26,7 +26,7 @@ Tutor Detail
           <h4 class="card-title">{{ $data->name }}</h4>
           <h6 class="card-subtitle">{{ current(explode(' ', $data->registered_date)) }} registered</h6>
           @if ($data->membership_type!=0)
-          <h6 class="card-subtitle">{{ $data->membership_type==1? 'Plus': 'Premium' }} Member since {{ current(explode(' ', $data->membership_updated_date)) }}</h6>
+          <h6 class="card-subtitle">{{ $data->membership_type==1? 'Plus': 'Premium' }} Member since {{ $data->membership_updated_date }} till {{ $data->membership_expiry_date }}</h6>
           @else
           <h6 class="card-subtitle">Free Member</h6>
           @endif
@@ -192,7 +192,7 @@ Tutor Detail
                       <label class="control-label text-right col-md-3 pt-2">Expiry Date: </label>
                       <div class="col-md-9">
                         <div class="input-group">
-                          <input type="text" class="form-control" id="expire_date" value="<?= $data->date; ?>" placeholder="yyyy-mm-dd" readonly disabled>
+                          <input type="text" class="form-control" id="expire_date" value="<?= $data->membership_expiry_date; ?>" placeholder="yyyy-mm-dd" readonly disabled>
                           <div class="input-group-append">
                             <span class="input-group-text"><i class="icon-calender"></i></span>
                           </div>

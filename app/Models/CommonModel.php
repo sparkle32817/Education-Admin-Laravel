@@ -62,6 +62,6 @@ class CommonModel extends Model
   {
     return DB::table($tableName)
       ->where('id', $id)
-      ->update(['membership_type' => $memberType, 'membership_updated_date' => $expireDate]);
+      ->update(['membership_type' => $memberType, 'membership_expiry_date' => $expireDate]);
   }
 }

@@ -1,14 +1,22 @@
 $(document).ready(function() {
-  let membershipOrigin = $('#membership').val();
-  let expireDateOrigin = $('#expire_date').val();
   // Date Picker
   $('#expire_date').datepicker({
     autoclose: true,
     clearBtn: true,
-    format: 'yyyy-mm-d',
+    format: 'yyyy-mm-dd',
     startDate: new Date(),
     todayHighlight: true
   });
+
+  let membershipOrigin = $('#membership').val();
+  let expireDateOrigin = $('#expire_date').val();
+
+  console.log($('#expire_date').val());
+
+  // if (expireDateOrigin == '1970-01-01') { //Local
+  if (expireDateOrigin == '0000-00-00' || expireDateOrigin == null) { //Online
+    $('#expire_date').datepicker('update', '');
+  }
 
   $('#membership').on('change', function() {
     if ($(this).val() == 0) {
@@ -55,7 +63,7 @@ $(document).ready(function() {
           expireDateOrigin = $('#expire_date').val();
           $('#membership, #expire_date').prop('disabled', true);
           $('#btnReset').prop('disabled', true);
-          $(this).text('Edit');
+          $('#btnEdit').text('Edit');
         }
       });
 

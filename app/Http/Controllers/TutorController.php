@@ -33,7 +33,6 @@ class TutorController extends BaseController
     $data->service_area = CommonController::getSelectedName('tbl_location', $data->location);
     $data->certification = CommonController::getSelectedName('tbl_certification', $data->certification);
     $data->qualification = CommonController::getSelectedName('tbl_qualification', $data->qualification);
-    $data->date = date('Y-m-d', strtotime($data->membership_updated_date));
 
     return view('pages.tutor.detail', compact('data'));
   }
